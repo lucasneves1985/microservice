@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.lcn</groupId>
 	<artifactId>api-gateway-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<name>api-gateway-server</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

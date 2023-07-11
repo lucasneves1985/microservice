@@ -6,11 +6,11 @@ spring:
           enable: true
       routes:
         - id: company
-          uri: http://localhost:8070
+          uri: http://${COMPANY_PATH:localhost}:8070
           predicates:
             - Path=/company/**
         - id: employee
-          uri: http://localhost:8090
+          uri: http://${EMPLOYEE_PATH:localhost}:8090
           predicates:
             - Path=/employee/**
 

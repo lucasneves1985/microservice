@@ -1,6 +1,5 @@
-
 spring:
   application:
-    name: employee
+    name: gateway
   config:
     import: optional:configserver:http://${CONFIG_PATH:localhost}:8888

@@ -12,7 +12,7 @@ jpa:
 
 application:
   config:
-    employee-url: http://localhost:8222/employee
+    employee-url: http://${EMPLOYEE_PATH:localhost}:8222/employee
 
 
 eureka:
@@ -20,7 +20,7 @@ eureka:
     hostname: localhost
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://${DISCOVERY_PATH:localhost}:8761/eureka
 
 server:
   port: 8070
