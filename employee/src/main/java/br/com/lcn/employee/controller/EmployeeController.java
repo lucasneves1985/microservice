@@ -26,6 +26,7 @@ public class EmployeeController {
             @RequestHeader HttpHeaders headers,
             @PathVariable("id") Integer id
     ) {
+        System.out.println("Load Balance:" + id);
         return ResponseEntity.ok(employeeService.findByCompanyId(id));
     }
 }

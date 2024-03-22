@@ -1,0 +1,77 @@
+version: '3.4'
+services:
+  config:
+    image: config:1.0
+    container_name: config-server
+    ports:
+      - 8888:8888
+    environment:
+      - COMPOSE_HTTP_TIMEOUT=50    
+      - COMPANY_PATH=company-app 
+      - EMPLOYEE_PATH=employee-app
+      - DISCOVERY_PATH=discovery-server
+      - GATEWAY_PATH=gateway-server
+      - CONFIG_PATH=config-server
+    restart: on-failure:10
+
+  discovery:
+    image: discovery:1.0
+    container_name: discovery-server
+    ports:
+      - 8761:8761
+    environment:
+      - COMPANY_PATH=company-app 
+      - EMPLOYEE_PATH=employee-app
+      - DISCOVERY_PATH=discovery-server
+      - GATEWAY_PATH=gateway-server
+      - CONFIG_PATH=config-server
+    restart: on-failure:10
+    depends_on:
+      - config
+  gateway:
+    image: gateway:1.0
+    container_name: gateway-server
+    ports:
+      - 8222:8222
+    environment:
+      - COMPANY_PATH=company-app 
+      - EMPLOYEE_PATH=employee-app
+      - DISCOVERY_PATH=discovery-server
+      - GATEWAY_PATH=gateway-server
+      - CONFIG_PATH=config-server
+    restart: on-failure:10
+    depends_on:
+      - config
+      - discovery
+  company:
+    image: company:1.0
+    container_name: company-app
+    ports:
+      - 8070:8070
+    environment:
+      - COMPANY_PATH=company-app 
+      - EMPLOYEE_PATH=localhost
+      - DISCOVERY_PATH=discovery-server
+      - GATEWAY_PATH=gateway-server
+      - CONFIG_PATH=config-server
+    restart: on-failure:10
+    depends_on:
+      - config
+      - discovery
+      - gateway
+  employee:
+    image: employee:1.0
+    container_name: employee-app
+    ports:
+      - 8090:8090
+    environment:
+      - COMPANY_PATH=company-app 
+      - EMPLOYEE_PATH=employee-app
+      - DISCOVERY_PATH=discovery-server
+      - GATEWAY_PATH=gateway-server
+      - CONFIG_PATH=config-server
+    restart: on-failure:10
+    depends_on:
+      - config
+      - discovery
+      - gateway

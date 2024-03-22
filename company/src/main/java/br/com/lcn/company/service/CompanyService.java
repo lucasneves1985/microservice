@@ -7,6 +7,7 @@ import br.com.lcn.company.model.Company;
 import br.com.lcn.company.respository.CompanyRepository;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 

@@ -10,11 +10,6 @@ jpa:
   hibernate:
     ddl-auto: validate
 
-application:
-  config:
-    employee-url: http://${EMPLOYEE_PATH:localhost}:8222/employee
-
-
 eureka:
   instance:
     hostname: localhost
@@ -23,9 +18,5 @@ eureka:
       defaultZone: http://${DISCOVERY_PATH:localhost}:8761/eureka
 
 server:
-  port: 8070
+  port: 0
 
-management:
-  tracing:
-    sampling:
-      probability: 1.0

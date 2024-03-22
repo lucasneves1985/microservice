@@ -17,3 +17,5 @@ cd ..
 cd "employee"
 mvn clean package -DskipTests
 docker build -t employee:1.0 .
+
+

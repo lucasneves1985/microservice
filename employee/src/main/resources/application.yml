@@ -4,3 +4,10 @@ spring:
     name: employee
   config:
     import: optional:configserver:http://${CONFIG_PATH:localhost}:8888
+server:
+  servlet:
+    context-path: /emp
+eureka:
+  instance:
+    hostname: localhost
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
